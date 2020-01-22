@@ -62,7 +62,15 @@ function App() {
           <img id="uploaded-image" src={file} />
         </div>
         <div className="btn-group">
-          <input type="file" onChange={handleChange} />
+          <input
+            id="file-input"
+            onChange={handleChange}
+            type="file"
+            class="btn-file"
+          />
+          <label className="btn" for="file-input">
+            Choose a file
+          </label>
           <button disabled={!file} className="btn" onClick={handleClick}>
             CALCULATE
           </button>

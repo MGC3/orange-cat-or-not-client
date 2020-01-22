@@ -2,18 +2,19 @@
   text-align: center;
   min-height: 100vh;
   min-width: 100vw;
-  background: #fef6e4;
 }
 
 .title {
   color: #001858;
+  font-size: 48px;
 }
 
 .image-container {
   height: 400px;
   width: 400px;
   margin: 0 auto;
-  border: dashed pink;
+  border: dashed 8px #001858;
+  border-radius: 24px;
 }
 
 img {
@@ -22,7 +23,7 @@ img {
 }
 
 .btn {
-  background: #ff8906;
+  background: #ffffff;
   border: 3px solid black;
   border-radius: 4px;
   padding: 15px;
@@ -31,11 +32,31 @@ img {
   cursor: pointer;
 }
 
+/* style the file input, attrib: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
+.btn-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* TODO: delete this if we add drag/drop */
+/* .btn + label {
+  background: #fff;
+  border: 3px solid black;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 20px;
+  font-family: inherit;
+  cursor: pointer;
+} */
+
 .btn-group {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  border: dashed red;
   height: 80px;
   width: 400px;
   margin: 16px auto 0 auto;

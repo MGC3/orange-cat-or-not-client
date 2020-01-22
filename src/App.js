@@ -63,7 +63,7 @@ function App() {
         </div>
         <div className="btn-group">
           <input type="file" onChange={handleChange} />
-          <button className="btn" onClick={handleClick}>
+          <button disabled={!file} className="btn" onClick={handleClick}>
             CALCULATE
           </button>
         </div>

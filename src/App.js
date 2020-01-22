@@ -19,27 +19,34 @@ function App() {
       .catch(() => setMessage('Unable to load model'));
   }, []);
 
+  const transformImagePromise = image =>
+    new Promise((resolve, reject) => {
+      // transform/preprocess the image
+      // attrib: https://deeplizard.com/learn/video/eEkpBnOd8Zk
+      let sample = tf.browser
+        .fromPixels(image)
+        .resizeNearestNeighbor([224, 224])
+        .toFloat()
+        .sub(tf.scalar(127.5))
+        .div(tf.scalar(127.5))
+        .expandDims();
+
+      sample ? resolve(sample) : reject(console.error);
+    });
+
   const handleClick = e => {
     e.preventDefault();
 
     // grab the image
     let image = document.querySelector('#uploaded-image');
 
-    // transform/preprocess the image
-    // attrib: https://deeplizard.com/learn/video/eEkpBnOd8Zk
-    let sample = tf.browser
-      .fromPixels(image)
-      .resizeNearestNeighbor([224, 224])
-      .toFloat()
-      .sub(tf.scalar(127.5))
-      .div(tf.scalar(127.5))
-      .expandDims();
-
-    // make a prediction on the transformed image
-    model
-      .predict(sample)
-      .data()
-      .then(data => orangeOrNot(data));
+    // transform the image
+    transformImagePromise(image)
+      // run the prediction on the image
+      .then(transformedImage => model.predict(transformedImage).data())
+      // translate the prediction
+      .then(prediction => orangeOrNot(prediction))
+      .catch(console.error);
   };
 
   const orangeOrNot = prediction => {

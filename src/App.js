@@ -9,20 +9,19 @@ function App() {
 
   useEffect(() => {
     // load our model from the api and then store it in state
-    let model = tf
-      .loadLayersModel(
-        'https://aqueous-river-22133.herokuapp.com/model/model.json'
-      )
+    tf.loadLayersModel(
+      'https://aqueous-river-22133.herokuapp.com/model/model.json'
+    )
       .then(data => {
         setModel(data);
         setMessage('Model successfully loaded');
       })
-      .catch(err => console.warn('Unable to load model'));
+      .catch(() => setMessage('Unable to load model'));
   }, []);
 
   const handleClick = e => {
     e.preventDefault();
-    setMessage('Loading');
+
     // grab the image
     let image = document.querySelector('#uploaded-image');
 
@@ -43,8 +42,8 @@ function App() {
       .then(data => orangeOrNot(data));
   };
 
-  const orangeOrNot = input => {
-    return input[0] < 0.5
+  const orangeOrNot = prediction => {
+    return prediction[0] < 0.5
       ? setMessage('You ARE an orange cat')
       : setMessage('You are NOT an orange cat');
   };
@@ -66,9 +65,9 @@ function App() {
             id="file-input"
             onChange={handleChange}
             type="file"
-            class="btn-file"
+            className="btn-file"
           />
-          <label className="btn" for="file-input">
+          <label className="btn" htmlFor="file-input">
             Choose a file
           </label>
           <button disabled={!file} className="btn" onClick={handleClick}>

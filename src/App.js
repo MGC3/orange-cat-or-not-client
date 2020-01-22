@@ -56,14 +56,18 @@ function App() {
   return (
     <div className="app-container">
       <h1 className="title">Orange Cat or Not Orange Cat</h1>
-      <button onClick={handleClick}>Test</button>
-      <h1>{message}</h1>
       {/* from https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa */}
       <div>
-        <input type="file" onChange={handleChange} />
         <div className="image-container">
           <img id="uploaded-image" src={file} />
         </div>
+        <div className="btn-group">
+          <input type="file" onChange={handleChange} />
+          <button className="btn" onClick={handleClick}>
+            CALCULATE
+          </button>
+        </div>
+        <h1>{message}</h1>
       </div>
     </div>
   );

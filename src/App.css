@@ -9,3 +9,14 @@
 .title {
   color: #001858;
 }
+
+.image-container {
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}

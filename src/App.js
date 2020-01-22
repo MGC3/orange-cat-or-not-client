@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import './App.css';
-import mango from './assets/mango.jpg';
 
 function App() {
   const [model, setModel] = useState(null);
   const [message, setMessage] = useState('');
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     // load our model from the api and then store it in state
@@ -24,7 +24,7 @@ function App() {
     e.preventDefault();
     setMessage('Loading');
     // grab the image
-    let image = document.querySelector('#mango');
+    let image = document.querySelector('#uploaded-image');
 
     // transform/preprocess the image
     // attrib: https://deeplizard.com/learn/video/eEkpBnOd8Zk
@@ -49,12 +49,22 @@ function App() {
       : setMessage('You are NOT an orange cat');
   };
 
+  const handleChange = e => {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  };
+
   return (
     <div className="app-container">
       <h1 className="title">Orange Cat or Not Orange Cat</h1>
       <button onClick={handleClick}>Test</button>
-      <img src={mango} alt="" id="mango" />
       <h1>{message}</h1>
+      {/* from https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa */}
+      <div>
+        <input type="file" onChange={handleChange} />
+        <div className="image-container">
+          <img id="uploaded-image" src={file} />
+        </div>
+      </div>
     </div>
   );
 }

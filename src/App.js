@@ -58,11 +58,7 @@ function App() {
       {/* from https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa */}
       <div>
         <div className="image-container">
-          <img
-            alt="blank until data is uploaded by the user"
-            id="uploaded-image"
-            src={file}
-          />
+          <img alt="" id="uploaded-image" src={file} />
         </div>
         <div className="btn-group">
           <input

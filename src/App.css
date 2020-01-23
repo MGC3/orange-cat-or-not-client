@@ -7,11 +7,13 @@
 .title {
   color: #001858;
   font-size: 48px;
+  margin-top: 0;
+  padding-top: 24px;
 }
 
 .image-container {
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   margin: 0 auto;
   border: dashed 8px #001858;
   border-radius: 24px;

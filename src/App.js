@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import './App.css';
 import { transformImagePromise } from './utils';
+import { apiUrl } from './constants';
 
 function App() {
   const [model, setModel] = useState(null);
@@ -10,9 +11,7 @@ function App() {
 
   useEffect(() => {
     // load our model from the api and then store it in state
-    tf.loadLayersModel(
-      'https://aqueous-river-22133.herokuapp.com/model/model.json'
-    )
+    tf.loadLayersModel(apiUrl)
       .then(data => {
         setModel(data);
         setMessage('Model successfully loaded');

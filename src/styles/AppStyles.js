@@ -1,18 +1,16 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-// export const GlobalStyle = createGlobalStyle`
-//   @import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
-
-//   body {
-//     margin: 0;
-//     font-family: 'Space Mono', monospace, -apple-system, BlinkMacSystemFont,
-//       'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-//       'Droid Sans', 'Helvetica Neue', sans-serif;
-//     -webkit-font-smoothing: antialiased;
-//     -moz-osx-font-smoothing: grayscale;
-//     background: #fef6e4;
-//   }
-// `;
+export const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: 'Space Mono', monospace, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #fef6e4;
+  }
+`;
 
 export const AppContainer = styled.div`
   text-align: center;

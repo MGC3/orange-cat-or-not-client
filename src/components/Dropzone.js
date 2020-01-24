@@ -1,5 +1,10 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import {
+  DropzoneContainer,
+  ImageContainer,
+  Image
+} from '../styles/DropzoneStyles';
 
 export default function Dropzone({ file, setFile, setMessage, imageRef }) {
   // when a file is dropped or selected from filesystem
@@ -17,7 +22,7 @@ export default function Dropzone({ file, setFile, setMessage, imageRef }) {
   });
 
   return (
-    <div {...getRootProps()} className="dropzone">
+    <DropzoneContainer {...getRootProps()}>
       <input {...getInputProps()} />
       {isDragActive ? (
         <p>Drop the files here ...</p>
@@ -26,11 +31,11 @@ export default function Dropzone({ file, setFile, setMessage, imageRef }) {
           {!file && (
             <p>Drag 'n' drop an image here, or click to select image</p>
           )}
-          <div className="image-container">
-            <img alt="" id="uploaded-image" src={file} ref={imageRef} />
-          </div>
+          <ImageContainer>
+            <Image alt="" id="uploaded-image" src={file} ref={imageRef} />
+          </ImageContainer>
         </>
       )}
-    </div>
+    </DropzoneContainer>
   );
 }

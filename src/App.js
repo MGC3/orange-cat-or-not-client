@@ -3,6 +3,7 @@ import * as tf from '@tensorflow/tfjs';
 import './App.css';
 import { transformImagePromise } from './utils';
 import { apiUrl } from './constants';
+import Dropzone from './Dropzone';
 
 function App() {
   const [model, setModel] = useState(null);
@@ -42,6 +43,7 @@ function App() {
 
   const handleChange = e => {
     setFile(URL.createObjectURL(e.target.files[0]));
+    console.log(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -49,19 +51,9 @@ function App() {
       <h1 className="title">Orange Cat or Not Orange Cat</h1>
       {/* from https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa */}
       <div>
-        <div className="image-container">
-          <img alt="" id="uploaded-image" src={file} />
-        </div>
+        <Dropzone file={file} setFile={setFile} setMessage={setMessage} />
+
         <div className="btn-group">
-          <input
-            id="file-input"
-            onChange={handleChange}
-            type="file"
-            className="btn-file"
-          />
-          <label className="btn" htmlFor="file-input">
-            Choose a file
-          </label>
           <button disabled={!file} className="btn" onClick={handleClick}>
             CALCULATE
           </button>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import './App.css';
-import { transformImagePromise } from './utils';
-import { apiUrl } from './constants';
+import { transformImagePromise } from '../utils';
+import { apiUrl } from '../constants';
 import Dropzone from './Dropzone';
 
 function App() {

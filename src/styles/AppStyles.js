@@ -41,4 +41,6 @@ export const CalculateButton = styled.button`
   cursor: pointer;
 `;
 
-export const Message = styled.h1``;
+export const Message = styled.h1`
+  color: #001858;
+`;

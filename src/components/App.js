@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import Dropzone from './Dropzone';
 import {
-  GlobalStyle,
+  // GlobalStyle,
   AppContainer,
   Title,
   CalculateButton,
@@ -44,7 +44,7 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <AppContainer>
         <Title>Orange Cat or Not Orange Cat</Title>
         <Dropzone

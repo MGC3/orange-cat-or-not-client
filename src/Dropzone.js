@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-export default function Dropzone({ file, setFile, setMessage }) {
+export default function Dropzone({ file, setFile, setMessage, imageRef }) {
   // when a file is dropped or selected from filesystem
   const onDrop = useCallback(acceptedFiles => {
     // create a URL based on the file and set it
@@ -27,7 +27,7 @@ export default function Dropzone({ file, setFile, setMessage }) {
             <p>Drag 'n' drop an image here, or click to select image</p>
           )}
           <div className="image-container">
-            <img alt="" id="uploaded-image" src={file} />
+            <img alt="" id="uploaded-image" src={file} ref={imageRef} />
           </div>
         </>
       )}

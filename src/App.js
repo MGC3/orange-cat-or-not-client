@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import './App.css';
 import { transformImagePromise } from './utils';
@@ -9,6 +9,7 @@ function App() {
   const [model, setModel] = useState(null);
   const [message, setMessage] = useState('');
   const [file, setFile] = useState(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     // load our model from the api and then store it in state
@@ -20,11 +21,8 @@ function App() {
   }, []);
 
   const handleClick = e => {
-    e.preventDefault();
-    // grab the image
-    let image = document.querySelector('#uploaded-image');
     // transform the image
-    transformImagePromise(image)
+    transformImagePromise(imageRef.current)
       // run the prediction on the image
       .then(transformedImage => model.predict(transformedImage).data())
       // translate the prediction
@@ -41,7 +39,12 @@ function App() {
   return (
     <div className="app-container">
       <h1 className="title">Orange Cat or Not Orange Cat</h1>
-      <Dropzone file={file} setFile={setFile} setMessage={setMessage} />
+      <Dropzone
+        file={file}
+        setFile={setFile}
+        setMessage={setMessage}
+        imageRef={imageRef}
+      />
       <button disabled={!file} className="btn" onClick={handleClick}>
         CALCULATE
       </button>

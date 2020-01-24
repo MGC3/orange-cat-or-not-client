@@ -15,17 +15,14 @@ function App() {
     tf.loadLayersModel(apiUrl)
       .then(data => {
         setModel(data);
-        setMessage('Model successfully loaded');
       })
       .catch(() => setMessage('Unable to load model'));
   }, []);
 
   const handleClick = e => {
     e.preventDefault();
-
     // grab the image
     let image = document.querySelector('#uploaded-image');
-
     // transform the image
     transformImagePromise(image)
       // run the prediction on the image
@@ -41,25 +38,14 @@ function App() {
       : setMessage('You are NOT an orange cat');
   };
 
-  const handleChange = e => {
-    setFile(URL.createObjectURL(e.target.files[0]));
-    console.log(URL.createObjectURL(e.target.files[0]));
-  };
-
   return (
     <div className="app-container">
       <h1 className="title">Orange Cat or Not Orange Cat</h1>
-      {/* from https://medium.com/@650egor/react-30-day-challenge-day-2-image-upload-preview-2d534f8eaaa */}
-      <div>
-        <Dropzone file={file} setFile={setFile} setMessage={setMessage} />
-
-        <div className="btn-group">
-          <button disabled={!file} className="btn" onClick={handleClick}>
-            CALCULATE
-          </button>
-        </div>
-        <h1>{message}</h1>
-      </div>
+      <Dropzone file={file} setFile={setFile} setMessage={setMessage} />
+      <button disabled={!file} className="btn" onClick={handleClick}>
+        CALCULATE
+      </button>
+      <h1>{message}</h1>
     </div>
   );
 }

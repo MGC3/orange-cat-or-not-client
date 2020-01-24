@@ -6,7 +6,7 @@ export default function Dropzone({ file, setFile, setMessage }) {
   const onDrop = useCallback(acceptedFiles => {
     // create a URL based on the file and set it
     setFile(URL.createObjectURL(acceptedFiles[0]));
-    // also clear the message, so user doesn't continue to see old prediction
+    // clear the message, so user doesn't continue to see old prediction
     setMessage('');
   }, []);
 

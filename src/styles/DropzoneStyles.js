@@ -9,12 +9,20 @@ export const DropzoneContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 400px) {
+    height: 300px;
+    width: 300px;
+  }
 `;
 
 export const ImageContainer = styled.div`
   height: 350px;
   width: 350px;
   position: absolute;
+  @media screen and (max-width: 400px) {
+    height: 300px;
+    width: 300px;
+  }
 `;
 
 export const Image = styled.img`
